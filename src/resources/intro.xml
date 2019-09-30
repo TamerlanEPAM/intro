@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+       xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context = "http://www.springframework.org/schema/context"
+       xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+    <context:component-scan base-package="kz.zhabassov.intro"/>
+
+    <bean id="App" class="kz.zhabassov.intro.A" >
+        <property name="className" value="A"/>
+    </bean>
+    <bean id="B" class="kz.zhabassov.intro.B"  parent="App">
+        <property name="parentBeanName" value="App"/>
+        <property name="className" value="B"/>
+    </bean>
+
+    <bean id="C" class="kz.zhabassov.intro.C" parent="App" >
+        <property name="parentBeanName" value="App"/>
+        <property name="className" value="C"/>
+    </bean>
+
+    <bean id="D" class="kz.zhabassov.intro.D" parent="C">
+        <property name="parentBeanName" value="C"/>
+        <property name="className" value="D"/>
+    </bean>
+
+    <bean id="E" class="kz.zhabassov.intro.E" parent="C">
+        <property name="parentBeanName" value="C"/>
+        <property name="className" value="E"/>
+     </bean>
+
+    <bean id="childBeansA" class="kz.zhabassov.intro.ChildBean">
+        <property name="childBeans">
+            <list>
+                <ref bean="B"/>
+                <ref bean="C"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="childBeansC" class="kz.zhabassov.intro.ChildBean">
+        <property name="childBeans">
+            <list>
+                <ref bean="D"/>
+                <ref bean="E"/>
+            </list>
+        </property>
+    </bean>
+
+
+</beans>

@@ -1,0 +1,3 @@
+Hello from logger!
+class name: A; Hello from logger!
+class name: A; 
