@@ -1,4 +1,5 @@
-#Spring intro
+#intro
+
 Create Spring "Hello world" app.
 
 Tech requirements:
